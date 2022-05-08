@@ -60,7 +60,7 @@ namespace ATMCounter
                 {
                     i++;
                     Console.WriteLine("-----------------------------------\n" +
-                                     "    Username or PIN Number is invalid \n" + 
+                                     "    Username or PIN Number is invalid, \n" + 
                                     $"    you have {3 - i} more time to try it!! \n" +
                                       "-----------------------------------");
                 }
@@ -121,11 +121,11 @@ namespace ATMCounter
             Console.WriteLine("\n        Test Users info:       "); 
             foreach (var _user in users)
             {
-            Console.WriteLine("--------------------------------------\n" +
-                              $"    First Name: {_user.GetFirstname()},\n" + 
-                              $"    Last Name: {_user.GetLastname()},\n" +
-                              $"    UserName: {_user.GetUserName()},\n" +
-                              $"    PIN Number: {_user.GetPinNumber()}\n" +
+            Console.WriteLine("-------------------------------------- \n" +
+                              $"    First Name: {_user.GetFirstname()} \n" + 
+                              $"    Last Name: {_user.GetLastname()} \n" +
+                              $"    UserName: {_user.GetUserName()} \n" +
+                              $"    PIN Number: {_user.GetPinNumber()} \n" +
                               "--------------------------------------");
             }
             Console.WriteLine("Please take note of Username and PIN for testing!!! \nTab any KEY to continue!!");
@@ -156,11 +156,12 @@ namespace ATMCounter
                         }
                         break;
                     case "N":
-                        Console.WriteLine("-------------------------------------------\n" +
-                                          "    New interest rate: (0.00001 - 0.09)\n" +
+                        string message = "-------------------------------------------\n" +
+                                          "    New interest rate: (0.0001 - 0.09)\n" +
                                           "    For all of client saving account:\n" +
-                                          "-------------------------------------------");
-                        float interst = float.Parse(Console.ReadLine());
+                                          "-------------------------------------------";
+                        float interst = 0;
+                        interst = Methods.ValidFloat(interst, message);
                         foreach (var savingaccount in savingAccounts)
                         {
                             savingaccount.PayInterest(interst);

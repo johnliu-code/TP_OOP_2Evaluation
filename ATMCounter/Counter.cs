@@ -71,7 +71,7 @@ namespace ATMCounter
     
         public double CheckingDeposit(int pinnumber, double amount)
         {
-            if (validUser)
+            if (validUser && amount > 0)
             {
                 balance = checking.Deposit(amount);
 
@@ -87,7 +87,7 @@ namespace ATMCounter
 
         public double CheckingWithdrawal(int pinnumber, double amount)
         {
-            if (validUser)
+            if (validUser && amount > 0)
             {
                 balance = checking.WithDrawal(amount);
 
@@ -105,7 +105,7 @@ namespace ATMCounter
 
         public double SavingDeposit(int pinnumber, double amount)
         {
-            if (validUser)
+            if (validUser && amount > 0)
             {
                 balance = saving.Deposit(amount);
 
@@ -121,7 +121,7 @@ namespace ATMCounter
 
         public double SavingWithdrawal(int pinnumber, double amount)
         {
-            if (validUser)
+            if (validUser && amount > 0)
             {
                 balance = saving.WithDrawal(amount);
 
@@ -139,14 +139,8 @@ namespace ATMCounter
         //Transfer from account
         public void TransferBetweenAccount (int pinnumber, double amount)
         {
-            if (validUser)
+            if (validUser && amount > 0)
             {
-                Console.WriteLine("-------------------------------" +
-                                  "\nSelect Transfer mode: " +
-                                  "\n1.From Checking to Saving, " +
-                                  "\n2. From Saving to Checking: " +
-                                  "\nPlease entre Number 1 OR 2" +
-                                  "\n------------------------------");
                 string message = "-------------------------------" +
                                   "\nSelect Transfer mode: " +
                                   "\n1.From Checking to Saving, " +

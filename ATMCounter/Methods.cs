@@ -13,7 +13,7 @@ namespace ATMCounter
     {
         //Validate double number inpunt
         public static double ValidDouble(double inputDouble, string message)
-        {
+        {      
             try
             {
                 WriteLine(message);
@@ -24,6 +24,21 @@ namespace ATMCounter
                 WriteLine($"Please entre a valid Double number!!!");
                 return ValidDouble(inputDouble, message);
             }
+
+            try
+            {
+                if (inputDouble < 0)
+                {
+                    inputDouble = 0;
+                    throw new NegativeNumberException("Input Value shouldn't be Negative!!");
+                    return ValidDouble(inputDouble, message);
+                }
+            }
+            catch (NegativeNumberException nx)
+            {
+                WriteLine(nx.Message);
+            }
+
             return inputDouble;
         }
 
@@ -40,7 +55,49 @@ namespace ATMCounter
                 WriteLine($"Please entre a valid Int number!!!");
                 return ValidInt(inputInt, message);
             }
+            try
+            {
+                if (inputInt < 0)
+                {
+                    inputInt = 0;
+                    throw new NegativeNumberException("Input Value shouldn't be Negative!!");
+                    return ValidInt(inputInt, message);
+                }
+            }
+            catch (NegativeNumberException nx)
+            {
+                WriteLine(nx.Message);
+            }
             return inputInt;
+        }
+
+        //Validate Float number input
+        public static float ValidFloat(float inputFloat, string message)
+        {
+            try
+            {
+                WriteLine(message);
+                inputFloat = float.Parse(ReadLine());
+            }
+            catch (Exception)
+            {
+                WriteLine($"Please entre a valid Int number!!!");
+                return ValidFloat(inputFloat, message);
+            }
+            try
+            {
+                if (inputFloat < 0 || inputFloat > 0.09 || inputFloat < 0.0001)
+                {
+                    inputFloat = 0;
+                    throw new NegativeNumberException("Input Value shouldn't be Negative!! And between 0.0001 - 0.09");
+                    return ValidFloat(inputFloat, message);
+                }
+            }
+            catch (NegativeNumberException nx)
+            {
+                WriteLine(nx.Message);
+            }
+            return inputFloat;
         }
     }
 }
