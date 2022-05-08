@@ -10,8 +10,8 @@ namespace ATMCounter
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("ATM Counter Project for Evaluation 2.");
-            Console.Clear();
+            WriteLine("ATM Counter Project for Evaluation 2.");
+            Clear();
 
             MainMenu();
 
@@ -51,7 +51,12 @@ namespace ATMCounter
 
             while (backTomain == "Y")
             {
-                string message = "WelCome to ATM : 1. Login; 2. Log out.";
+                string message = "       Main menu        \n" +
+                                 "--------------------------\n" +
+                                 "    WelCome to ATM : \n" +
+                                 "    1. Login  \n" +
+                                 "    2. Exit \n" +
+                                 "---------------------------";
                 int inputValue = 0;
                 int mainMenuOption = Methods.ValidInt(inputValue, message);
                 switch (mainMenuOption)
@@ -64,46 +69,74 @@ namespace ATMCounter
 
                         if (userlogedin && loginUser.GetUserType() == 1)
                         {
-                            Console.WriteLine("Client");
+                            Clear();
+                            WriteLine($"    Welcome Client: {loginUser.GetFirstname()} !!");
                             string backToAccountMenu = "Y";
 
                             while (backToAccountMenu == "Y")
                             {
-                                message = "Please choose your Menu option: 1. Deposit; 2. Withdrawl; 3. Transfer; 4.History, 5. Exit";
+                                Clear();
+                                message = "--------------------------------------- \n" +
+                                          "    Please choose your Menu option: \n" +
+                                          "    1. Deposit \n" +
+                                          "    2. Withdrawl \n" +
+                                          "    3. Transfer \n" +
+                                          "    4. History \n" +
+                                          "    5. Exit \n" +
+                                          "---------------------------------------";
                                 int subMenuOption = Methods.ValidInt(inputValue, message);
                                 switch (subMenuOption)
                                 {
                                     case 1:
-                                        message = "Please chose Account Type you want to Deposit: 1. Cheking, 2. Saving.";
+                                        Clear();
+                                        message = "--------------------------------------------- \n" +
+                                                  "     Which Account you want to Deposit: \n" +
+                                                  "     1. Cheking \n" +
+                                                  "     2. Saving \n" +
+                                                  "---------------------------------------------";
                                         int accountOption = Methods.ValidInt(inputValue, message);
 
                                         switch (accountOption)
                                         {
                                             case 1:
-                                                message = "Please entre Amount you want to Deposit into Checking:";
+                                                Clear();
+                                                message = "---------------------------------------- \n" +
+                                                          "    Amount to Deposit into Checking: \n" +
+                                                          "----------------------------------------";
                                                 amount = Methods.ValidDouble(inputValue, message);
                                                 counter.CheckingDeposit(loginUser.GetPinNumber(), amount);
                                                 break;
                                             case 2:
-                                                message = "Please entre Amount you want to Deposit into Saving:";
+                                                Clear();
+                                                message = "---------------------------------------- \n" +
+                                                          "    Amount to Deposit into Saving: \n" + 
+                                                          "----------------------------------------";
                                                 amount = Methods.ValidDouble(inputValue, message);
                                                 counter.SavingDeposit(loginUser.GetPinNumber(), amount);
                                                 break;
                                             default:
-                                                WriteLine("Please entre a int number between 1 to 2 !");
+                                                WriteLine("    Please entre a int number between 1 to 2 !");
                                                 break;
                                         }
 
                                         break;
 
                                     case 2:
-                                        message = "Please chose Account Type you want to Withdrawal from: 1. Cheking, 2. Saving.";
+                                        Clear();
+                                        message = "------------------------------------------ \n" +
+                                                  "    Which Account to Withdrawal from: \n" +
+                                                  "    1. Cheking \n" +
+                                                  "    2. Saving \n" +
+                                                  "------------------------------------------";
                                         int account_type = Methods.ValidInt(inputValue, message);
 
                                         switch (account_type)
                                         {
                                             case 1:
-                                                message = "Please entre Amount you want to Withdrawal from Checking:";
+                                                Clear();
+                                                message = "--------------------------------------------- \n" +
+                                                          "    Amount to Withdrawal from Checking: \n" +
+                                                          "---------------------------------------------";
                                                 amount = Methods.ValidDouble(inputValue, message);
 
                                                 if (amount < counter.checking.BalanceAccount)
@@ -114,17 +147,20 @@ namespace ATMCounter
                                                     }
                                                     else
                                                     {
-                                                        WriteLine("The Maximum amount is 1000, and must be 10 times bills");
+                                                        WriteLine("    The Maximum amount is 1000, and must be 10 times bills");
                                                     }
                                                 }
                                                 else
                                                 {
-                                                    WriteLine("The Cheking account balance is not Enough for this Amount!!");
+                                                    WriteLine("    The Cheking balance is not Enough for this Amount!!");
                                                 }
 
                                                 break;
                                             case 2:
-                                                message = "Please entre Amount you want to Withdrawal from Saving:";
+                                                Clear();
+                                                message = "------------------------------------------ \n" +
+                                                          "    Amount to Withdrawal from Saving: \n" +
+                                                          "------------------------------------------";
                                                 amount = Methods.ValidDouble(inputValue, message);
 
                                                 if (amount < counter.saving.BalanceAccount)
@@ -135,27 +171,30 @@ namespace ATMCounter
                                                     }
                                                     else
                                                     {
-                                                        WriteLine("The Maximum amount is 1000, and must be 10 times bills");
+                                                        WriteLine("    The Maximum amount is 1000, and must be 10 times bills");
                                                     }
                                                 }
                                                 else
                                                 {
-                                                    WriteLine("The Saving account balance is not Enough for this Amount!!");
+                                                    WriteLine("    The Saving balance is not Enough for this Amount!!");
                                                 }
 
                                                 break;
                                             default:
-                                                WriteLine("Please entre a int number between 1 to 2 !");
+                                                WriteLine("    Please entre a int number between 1 to 2 !");
                                                 break;
 
-                                                WriteLine("Back to Main Menu? Y/N");
+                                                WriteLine("    Back to Main Menu? Y/N");
                                                 backTomain = ReadLine().ToUpper();
                                         }
 
                                         break;
 
                                     case 3:
-                                        message = "Please entre Amount you want to Transfer:";
+                                        Clear();
+                                        message = "---------------------------- \n" +
+                                                  "    Amount to Transfer: \n" +
+                                                  "----------------------------";
                                         amount = Methods.ValidDouble(inputValue, message);
 
                                         counter.TransferBetweenAccount(loginUser.GetPinNumber(), amount);
@@ -172,24 +211,31 @@ namespace ATMCounter
                                         break;
 
                                     default:
-                                        WriteLine("Please entre a int number between 1 to 4 !");
+                                        WriteLine("    Please entre a int number between 1 to 4 !");
                                         break;
                                 }
 
-                                WriteLine("Back to Account Menu? Y/N");
+                                WriteLine("    Back to Account Menu? Y/N");
                                 backToAccountMenu = ReadLine().ToUpper();
                             }
 
                         }
                         else if (userlogedin && loginUser.GetUserType() == 0)
                         {
-                            Console.WriteLine("Admin");
+                            Clear();
+                            WriteLine($"    Welcome Aministrator: { loginUser.GetFirstname()}!!");
 
                             string backtoAdminMenu = "Y";
 
                             while (backtoAdminMenu == "Y")
                             {
-                                message = "Please choose your Menu option: 1. Pay Interest Rate; 2. Display Report; 3. Exit";
+                                Clear();
+                                message = "-------------------------------------- \n" +
+                                          "    Please choose your Menu option: \n" +
+                                          "    1. Pay Interest Rate \n" +
+                                          "    2. Display Report \n" +
+                                          "    3. Exit \n" +
+                                          "--------------------------------------";
                                 int adminOption = Methods.ValidInt(inputValue, message);
 
                                 switch (adminOption)
@@ -203,14 +249,13 @@ namespace ATMCounter
                                         break;
 
                                     default:
-                                        WriteLine("Please entre Number between 1 and 3 !!!");
+                                        WriteLine("    Please entre Number between 1 and 3 !!!");
                                         break;
                                 }
 
-                                WriteLine("Back to Account Menu? Y/N");
+                                WriteLine("    Back to Account Menu? Y/N");
                                 backtoAdminMenu = ReadLine().ToUpper();
                             }
-
 
                         }
 
@@ -222,10 +267,10 @@ namespace ATMCounter
                         break;
 
                     default:
-                        WriteLine("Please entre a int number between 1 to 2 !");
+                        WriteLine("    Please entre a int number between 1 to 2 !");
                         break;
                 }
-                WriteLine("Back to Main Menu? Y/N");
+                WriteLine("    Back to Main Menu? Y/N");
                 backTomain = ReadLine().ToUpper();
             }
         }

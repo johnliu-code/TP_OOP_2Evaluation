@@ -81,8 +81,8 @@ namespace ATMCounter
                 checking_records.Add(checkingrecord);
             }
 
+            Console.WriteLine($"    Deposit {amount} to Checking has done success, new balnce: {balance}");
             return balance;
-            Console.WriteLine($"Deposit {amount} to Checking has done success, new balnce: {balance}");
          }
 
         public double CheckingWithdrawal(int pinnumber, double amount)
@@ -97,8 +97,8 @@ namespace ATMCounter
                 checking_records.Add(checkingrecord);
             }
 
+            Console.WriteLine($"    Withdrawal {amount} from Checking has done success, new balnce: {balance}");
             return balance;
-            Console.WriteLine($"Withdrawal {amount} from Checking has done success, new balnce: {balance}");
         }
 
         //Saving Account whithdrawal and Deposit
@@ -114,9 +114,9 @@ namespace ATMCounter
 
                 saving_records.Add(savingrecord);
             }
-            
+
+            Console.WriteLine($"    Deposit {amount} to Saving has done success, new balnce: {balance}");
             return balance;
-            Console.WriteLine($"Deposit {amount} to Saving has done success, new balnce: {balance}");
         }
 
         public double SavingWithdrawal(int pinnumber, double amount)
@@ -131,8 +131,9 @@ namespace ATMCounter
                 saving_records.Add(savingrecord);
             }
 
+            Console.WriteLine($"    Withdrawal {amount} from Saving has done success, new balnce: {balance}");
             return balance;
-            Console.WriteLine($"Withdrawal {amount} from Saving has done success, new balnce: {balance}");
+
         }
 
         //Transfer from account
@@ -146,7 +147,14 @@ namespace ATMCounter
                                   "\n2. From Saving to Checking: " +
                                   "\nPlease entre Number 1 OR 2" +
                                   "\n------------------------------");
-                int Option = int.Parse(Console.ReadLine());
+                string message = "-------------------------------" +
+                                  "\nSelect Transfer mode: " +
+                                  "\n1.From Checking to Saving, " +
+                                  "\n2. From Saving to Checking: " +
+                                  "\nPlease entre Number 1 OR 2" +
+                                  "\n------------------------------";
+                int Option = 0;
+                Option = Methods.ValidInt(Option, message);
 
                 switch (Option)
                 {
@@ -211,7 +219,7 @@ namespace ATMCounter
                         break;
 
                     default:
-                        Console.WriteLine("Please entre valid number 1 or 2");
+                        Console.WriteLine("    Please entre valid number 1 or 2");
                         break;
                 }
             }

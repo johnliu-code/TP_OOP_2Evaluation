@@ -31,10 +31,10 @@ namespace ATMCounter
         {
             for (int i = 0; i < 3;)
             {
-                Console.WriteLine("User Name: ");
+                Console.WriteLine("    User Name: ");
                 username = Console.ReadLine();
-                Console.WriteLine("PIN Number:");
-                pinnumber = Methods.ValidInt(pinnumber, "Please entre your PIN Number");
+                Console.WriteLine("    PIN Number:");
+                pinnumber = Methods.ValidInt(pinnumber, "    Please entre your PIN Number");
 
                 foreach (User v_user in users)
                 {
@@ -167,16 +167,16 @@ namespace ATMCounter
                         }
                         break;
                     default:
-                        Console.WriteLine("Please entre valid letter Y or N");
+                        Console.WriteLine("    Please entre valid letter Y or N");
                         break;
                 }
 
             }
             else
             {
-                Console.WriteLine("You are not a valid user!!");
+                Console.WriteLine("    You are not a valid user!!");
             }
-            Console.WriteLine("The interst payment to all saving account success!!");
+            Console.WriteLine("    The interst payment to all saving account success!!");
 
         }
 
