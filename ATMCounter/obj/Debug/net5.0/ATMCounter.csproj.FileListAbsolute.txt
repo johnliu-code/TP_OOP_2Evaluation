@@ -1,0 +1,16 @@
+C:\Users\atdig\source\repos\TP_OOP_2Evaluation\ATMCounter\bin\Debug\net5.0\ATMCounter.exe
+C:\Users\atdig\source\repos\TP_OOP_2Evaluation\ATMCounter\bin\Debug\net5.0\ATMCounter.deps.json
+C:\Users\atdig\source\repos\TP_OOP_2Evaluation\ATMCounter\bin\Debug\net5.0\ATMCounter.runtimeconfig.json
+C:\Users\atdig\source\repos\TP_OOP_2Evaluation\ATMCounter\bin\Debug\net5.0\ATMCounter.runtimeconfig.dev.json
+C:\Users\atdig\source\repos\TP_OOP_2Evaluation\ATMCounter\bin\Debug\net5.0\ATMCounter.dll
+C:\Users\atdig\source\repos\TP_OOP_2Evaluation\ATMCounter\bin\Debug\net5.0\ATMCounter.pdb
+C:\Users\atdig\source\repos\TP_OOP_2Evaluation\ATMCounter\obj\Debug\net5.0\ATMCounter.csproj.AssemblyReference.cache
+C:\Users\atdig\source\repos\TP_OOP_2Evaluation\ATMCounter\obj\Debug\net5.0\ATMCounter.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\atdig\source\repos\TP_OOP_2Evaluation\ATMCounter\obj\Debug\net5.0\ATMCounter.AssemblyInfoInputs.cache
+C:\Users\atdig\source\repos\TP_OOP_2Evaluation\ATMCounter\obj\Debug\net5.0\ATMCounter.AssemblyInfo.cs
+C:\Users\atdig\source\repos\TP_OOP_2Evaluation\ATMCounter\obj\Debug\net5.0\ATMCounter.csproj.CoreCompileInputs.cache
+C:\Users\atdig\source\repos\TP_OOP_2Evaluation\ATMCounter\obj\Debug\net5.0\ATMCounter.dll
+C:\Users\atdig\source\repos\TP_OOP_2Evaluation\ATMCounter\obj\Debug\net5.0\ATMCounter.pdb
+C:\Users\atdig\source\repos\TP_OOP_2Evaluation\ATMCounter\obj\Debug\net5.0\ATMCounter.genruntimeconfig.cache
+C:\Users\atdig\source\repos\TP_OOP_2Evaluation\ATMCounter\obj\Debug\net5.0\ref\ATMCounter.dll
+C:\Users\atdig\source\repos\TP_OOP_2Evaluation\ATMCounter\obj\Debug\net5.0\refint\ATMCounter.dll
