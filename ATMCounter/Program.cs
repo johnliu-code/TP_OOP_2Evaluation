@@ -26,7 +26,6 @@ namespace ATMCounter
             int pinnumber = 0;
             double amount = 0;
             bool userlogedin;
-            bool is_admin;
 
             // Initialize users and counter for testing
             ATMSystem atm = new ATMSystem();
@@ -139,21 +138,7 @@ namespace ATMCounter
                                                           "---------------------------------------------";
                                                 amount = Methods.ValidDouble(inputValue, message);
 
-                                                if (amount < counter.checking.BalanceAccount)
-                                                {
-                                                    if (amount < 1000 && amount % 10 == 0)
-                                                    {
-                                                        counter.CheckingWithdrawal(loginUser.GetPinNumber(), amount);
-                                                    }
-                                                    else
-                                                    {
-                                                        WriteLine("    The Maximum amount is 1000, and must be 10 times bills");
-                                                    }
-                                                }
-                                                else
-                                                {
-                                                    WriteLine("    The Cheking balance is not Enough for this Amount!!");
-                                                }
+                                                counter.CheckingWithdrawal(loginUser.GetPinNumber(), amount);
 
                                                 break;
                                             case 2:
@@ -163,29 +148,12 @@ namespace ATMCounter
                                                           "------------------------------------------";
                                                 amount = Methods.ValidDouble(inputValue, message);
 
-                                                if (amount < counter.saving.BalanceAccount)
-                                                {
-                                                    if (amount < 1000 && amount % 10 == 0)
-                                                    {
-                                                        counter.SavingWithdrawal(loginUser.GetPinNumber(), amount);
-                                                    }
-                                                    else
-                                                    {
-                                                        WriteLine("    The Maximum amount is 1000, and must be 10 times bills");
-                                                    }
-                                                }
-                                                else
-                                                {
-                                                    WriteLine("    The Saving balance is not Enough for this Amount!!");
-                                                }
+                                                counter.SavingWithdrawal(loginUser.GetPinNumber(), amount);
 
                                                 break;
                                             default:
                                                 WriteLine("    Please entre a int number between 1 to 2 !");
                                                 break;
-
-                                                WriteLine("    Back to Main Menu? Y/N");
-                                                backTomain = ReadLine().ToUpper();
                                         }
 
                                         break;
@@ -195,7 +163,9 @@ namespace ATMCounter
                                         message = "---------------------------- \n" +
                                                   "    Amount to Transfer: \n" +
                                                   "----------------------------";
-                                        amount = Methods.ValidDouble(inputValue, message);
+
+                                        double maxvalue = 1000;
+                                        amount = Methods.MaxValue(amount, message, maxvalue);
 
                                         counter.TransferBetweenAccount(loginUser.GetPinNumber(), amount);
                                         break;

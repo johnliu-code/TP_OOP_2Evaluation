@@ -8,9 +8,9 @@ namespace ATMCounter
 {
     class SavingRecord
     {
-        private double deposit;
-        public double withdrawal;
-        private DateTime transtime;
+       // private double deposit;
+       // public double withdrawal;
+        //private DateTime transtime;
         private Saving saving;
         private double balance;
 
@@ -24,7 +24,7 @@ namespace ATMCounter
         public SavingRecord(Saving _saving)
         {
             saving = _saving;
-            transtime = DateTime.Now;
+            TransTime = DateTime.Now;
             balance = _saving.BalanceAccount;
         }
 

@@ -29,9 +29,7 @@ namespace ATMCounter
             {
                 if (inputDouble < 0)
                 {
-                    inputDouble = 0;
                     throw new NegativeNumberException("Input Value shouldn't be Negative!!");
-                    return ValidDouble(inputDouble, message);
                 }
             }
             catch (NegativeNumberException nx)
@@ -59,9 +57,7 @@ namespace ATMCounter
             {
                 if (inputInt < 0)
                 {
-                    inputInt = 0;
                     throw new NegativeNumberException("Input Value shouldn't be Negative!!");
-                    return ValidInt(inputInt, message);
                 }
             }
             catch (NegativeNumberException nx)
@@ -86,11 +82,15 @@ namespace ATMCounter
             }
             try
             {
-                if (inputFloat < 0 || inputFloat > 0.09 || inputFloat < 0.0001)
+                if (inputFloat < 0 )
                 {
-                    inputFloat = 0;
-                    throw new NegativeNumberException("Input Value shouldn't be Negative!! And between 0.0001 - 0.09");
-                    return ValidFloat(inputFloat, message);
+                    inputFloat = 0.0f;
+                    throw new NegativeNumberException("Input Value shouldn't be Negative!!");
+                }
+                else if (inputFloat > 0.09f || inputFloat < 0.0001f)
+                {
+                    inputFloat = 0.0f;
+                    throw new NegativeNumberException("Input Value should between 0.0001 - 0.09");
                 }
             }
             catch (NegativeNumberException nx)
@@ -98,6 +98,40 @@ namespace ATMCounter
                 WriteLine(nx.Message);
             }
             return inputFloat;
+        }
+
+        //Input double Amount Limit
+        public static double MaxValue (double inputDouble, string message, double maxvalue)
+        {
+            try
+            {
+                WriteLine(message);
+                inputDouble = ToDouble(ReadLine());
+            }
+            catch (Exception)
+            {
+                WriteLine($"Please entre a valid Double number!!!");
+                return ValidDouble(inputDouble, message);
+            }
+
+            try
+            {
+                if (inputDouble < 0)
+                {
+                    throw new NegativeNumberException("Input Value shouldn't be Negative!!");
+                }
+                else if (inputDouble > maxvalue)
+                {
+                    throw new NegativeNumberException($"The Max input value is {maxvalue}");
+                }
+            }
+            catch (NegativeNumberException nx)
+            {
+                WriteLine(nx.Message);
+            }
+
+            return inputDouble;
+
         }
     }
 }

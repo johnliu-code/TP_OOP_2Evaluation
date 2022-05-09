@@ -8,9 +8,6 @@ namespace ATMCounter
 {
     class CheckingRecord
     {
-        private double deposit;
-        public double withdrawal;
-        private DateTime transtime;
         private Checking checking;
         private double balance;
 
@@ -22,7 +19,7 @@ namespace ATMCounter
 
         public CheckingRecord(Checking _checking) {
             checking = _checking;
-            transtime = DateTime.Now;
+            TransTime = DateTime.Now;
             balance = _checking.BalanceAccount;
         }
     }

@@ -79,9 +79,9 @@ namespace ATMCounter
                 checkingrecord.Deposit = amount;
 
                 checking_records.Add(checkingrecord);
+                Console.WriteLine($"    Deposit {amount} to Checking has done success, new balnce: {balance}");
             }
 
-            Console.WriteLine($"    Deposit {amount} to Checking has done success, new balnce: {balance}");
             return balance;
          }
 
@@ -89,15 +89,37 @@ namespace ATMCounter
         {
             if (validUser && amount > 0)
             {
-                balance = checking.WithDrawal(amount);
+                if (amount < saving.BalanceAccount)
+                {
+                    if (amount <= 1000)
+                    {
+                        if (amount % 10 == 0)
+                        {
+                            balance = checking.WithDrawal(amount);
 
-                CheckingRecord checkingrecord = new CheckingRecord(checking);
-                checkingrecord.Withdrawal = amount;
+                            CheckingRecord checkingrecord = new CheckingRecord(checking);
+                            checkingrecord.Withdrawal = amount;
 
-                checking_records.Add(checkingrecord);
+                            checking_records.Add(checkingrecord);
+                            Console.WriteLine($"    Withdrawal {amount} from Checking has done success, new balnce: {balance}");
+                        }
+                        else
+                        {
+                            Console.WriteLine("    Only allow at least 10$ dollar bills");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("    The Maximum amount is 1000$ / time");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("    The Saving balance is not Enough for this Amount!!");
+                }
+
             }
 
-            Console.WriteLine($"    Withdrawal {amount} from Checking has done success, new balnce: {balance}");
             return balance;
         }
 
@@ -113,25 +135,47 @@ namespace ATMCounter
                 savingrecord.Deposit = amount;
 
                 saving_records.Add(savingrecord);
+                Console.WriteLine($"    Deposit {amount} to Saving has done success, new balnce: {balance}");
             }
 
-            Console.WriteLine($"    Deposit {amount} to Saving has done success, new balnce: {balance}");
             return balance;
         }
 
         public double SavingWithdrawal(int pinnumber, double amount)
         {
+
             if (validUser && amount > 0)
             {
-                balance = saving.WithDrawal(amount);
+                if (amount < checking.BalanceAccount)
+                {
+                    if (amount <= 1000)
+                    {
+                        if ( amount % 10 == 0)
+                        {
+                            balance = saving.WithDrawal(amount);
 
-                SavingRecord savingrecord = new SavingRecord(saving);
-                savingrecord.Withdrawal = amount;
+                            SavingRecord savingrecord = new SavingRecord(saving);
+                            savingrecord.Withdrawal = amount;
 
-                saving_records.Add(savingrecord);
+                            saving_records.Add(savingrecord);
+                            Console.WriteLine($"    Withdrawal {amount} from Saving has done success, new balnce: {balance}");
+                        }
+                        else
+                        {
+                            Console.WriteLine("    Only allow at least 10$ dollar bills");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("    The Maximum amount is 1000$ / time");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("    The Cheking balance is not Enough for this Amount!!");
+                }
             }
 
-            Console.WriteLine($"    Withdrawal {amount} from Saving has done success, new balnce: {balance}");
             return balance;
 
         }
@@ -139,7 +183,7 @@ namespace ATMCounter
         //Transfer from account
         public void TransferBetweenAccount (int pinnumber, double amount)
         {
-            if (validUser && amount > 0)
+            if (validUser && amount > 0 && amount <= 1000)
             {
                 string message = "-------------------------------" +
                                   "\nSelect Transfer mode: " +
@@ -153,7 +197,7 @@ namespace ATMCounter
                 switch (Option)
                 {
                     case 1:
-                        if (amount <= checking.BalanceAccount && amount <= 1000)
+                        if (amount <= checking.BalanceAccount)
                         {
                             Console.WriteLine("-------------------------------------------\n" +
                                                "    Tansfer from your checking account: \n" +
@@ -172,18 +216,17 @@ namespace ATMCounter
                         }
                         else
                         {
-                            Console.WriteLine("---------------------------------------\n" + 
+                            Console.WriteLine("---------------------------------------\n" +
                                              $"    Checking Account balance : {checking.BalanceAccount} \n" +
                                               "    Your account blance is not enough!! \n" +
-                                              "    Or Over the Max trasfer amount 1000!!! \n" +
-                                              "    Please check it and try again. \n" +
-                                             "-----------------------------------------"); 
+                                             "-----------------------------------------");
                         }
 
                         break;
 
                     case 2:
-                        if (amount <= saving.BalanceAccount && amount <= 1000)
+
+                        if (amount <= saving.BalanceAccount)
                         {
                             Console.WriteLine("-------------------------------------------\n" +
                                               "    Tansfer from your saving account: \n" +
@@ -205,8 +248,6 @@ namespace ATMCounter
                             Console.WriteLine("---------------------------------------\n" +
                                              $"    Saving Account balance : {saving.BalanceAccount} \n" +
                                               "    Your account blance is not enough!! \n" +
-                                              "    Or Over the Max trasfer amount 1000!!! \n" +
-                                              "    Please check it and try again. \n" +
                                              "-----------------------------------------");
                         }
 

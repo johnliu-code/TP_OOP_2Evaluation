@@ -13,9 +13,6 @@ namespace ATMCounter
         private double balanceAccount;
 
         Random randomNumber = new Random();
-
-        Administrator administrator;
-
         public Saving(int _numberNIP)
         {
             numberNIP = _numberNIP;

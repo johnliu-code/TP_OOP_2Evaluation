@@ -153,6 +153,7 @@ namespace ATMCounter
                         foreach (var savingaccount in savingAccounts)
                         {
                             savingaccount.PayInterest(interestrate);
+                            Console.WriteLine($"    The interst payment to saving account: {savingaccount.NumberAccount} is success!!");
                         }
                         break;
                     case "N":
@@ -162,10 +163,15 @@ namespace ATMCounter
                                           "-------------------------------------------";
                         float interst = 0;
                         interst = Methods.ValidFloat(interst, message);
-                        foreach (var savingaccount in savingAccounts)
+                        if (interst > 0 && interst >= 0.0001f && interst <= 0.09f)
                         {
-                            savingaccount.PayInterest(interst);
+                            foreach (var savingaccount in savingAccounts)
+                            {
+                                savingaccount.PayInterest(interst);
+                                Console.WriteLine($"    The new interst payment to saving account: {savingaccount.NumberAccount} is success!!");
+                            }
                         }
+
                         break;
                     default:
                         Console.WriteLine("    Please entre valid letter Y or N");
@@ -177,8 +183,7 @@ namespace ATMCounter
             {
                 Console.WriteLine("    You are not a valid user!!");
             }
-            Console.WriteLine("    The interst payment to all saving account success!!");
-
+ 
         }
 
         //Generate client account reports
